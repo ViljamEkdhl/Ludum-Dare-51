@@ -47,8 +47,8 @@
 	{#if displayValue != ''}
 		<p>
 			You have just betted
-			{displayValue}
-			coins 💰
+			<span class="font-bold text-amber-500">{displayValue}</span>
+			coins 💸
 		</p>
 	{:else}
 		<p />
