@@ -1,10 +1,9 @@
 <script>
-	let string = `this is my string`
+	import BetInputField from '../components/BetInputField.svelte';
+	import GreetingTitle from '../components/GreetingTitle.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<style>
-
-</style>
+<div class="flex items-center flex-col gap-8 mt-8">
+	<GreetingTitle />
+	<BetInputField />
+</div>
