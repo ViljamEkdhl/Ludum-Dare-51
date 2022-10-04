@@ -26,7 +26,7 @@
 			<p>
 				I would like to bet
 				<input
-					class={'border-b-2 rounded-lg p-1 px-2 m-1 focus:outline-none active:outline-none text-amber-500 font-bold w-36' + (!inputIsValid ? ' border-2 border-red-500' : '')}
+					class={'border-b-2 rounded-lg p-1 px-2 m-1 focus:outline-none active:outline-none text-amber-500 font-bold w-36 border-t-2 border-t-transparent' + (!inputIsValid ? ' border-2 border-red-500 border-t-red-500' : '')}
 					bind:value={inputValue}
 					on:keyup={handleOnChange}
 					id="inputField"
