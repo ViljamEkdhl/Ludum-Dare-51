@@ -21,7 +21,6 @@
 </script>
 
 <div class="flex flex-col justify-start gap-5">
-
 	<div class="flex gap-2">
 		<div class="flex items-baseline pt-1">
 			<p>
