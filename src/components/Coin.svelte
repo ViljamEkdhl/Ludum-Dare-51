@@ -1,8 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let coinCurrencyCost;
 	let coinName;
+	let coinCurrencyCost;
+
 	export let currencyCode;
 
 	onMount(() => {
