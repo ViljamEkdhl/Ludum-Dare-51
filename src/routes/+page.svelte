@@ -3,6 +3,7 @@
 	import Wallet from '../components/Wallet.svelte';
 	import Form from '../components/Form.svelte';
 	import Greeting from '../components/Greeting.svelte';
+	import CalculateWin from '../components/CalculateWin.svelte';
 </script>
 
 <div class="h-screen max-h-full flex items-center justify-center">
@@ -10,6 +11,7 @@
 		<Greeting />
 		<Form />
 		<Coin currencyCode={"ETH-USD"} />
+		<CalculateWin/>
 	</div>
 	<Wallet />
 </div>
