@@ -1,7 +1,7 @@
 <script>
 	import InputField from './InputField.svelte';
 	import { betInput } from '../stores/stores';
-	import { placeBet } from '../components/CalculateWin.svelte';
+	import { placedAmount } from '../components/CalculateWin.svelte';
 
 	let betValue = '';
 	let inputIsValid = false;
@@ -15,7 +15,7 @@
 
 	const handleOnSubmit = () => {
 		displayValue = betValue
-		//Skriva någon subscribe här kanske?
+		placedAmount.update(betValue);
 	};
 
 	const buttonStyle = 'bg-gray-200 rounded-lg px-3 py-2 border-b-4 self-baseline border-gray-500 active:border-b-0 active:border-t-2';
