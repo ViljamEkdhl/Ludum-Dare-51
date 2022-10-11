@@ -1,7 +1,6 @@
 <script>
 	import { walletAmount } from '../stores/stores';
 
-
 	let displayValue;
 
 	walletAmount.subscribe(value => {

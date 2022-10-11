@@ -2,19 +2,19 @@
 	import { to_number } from 'svelte/internal';
 	import { betInput } from '../stores/stores';
 
-	let inputValue = '';
+	let inputValue;
 	let inputIsValid = true;
 	
 	const handleOnChange = () => {
 		if (!to_number(inputValue)) {
 			inputIsValid = false;
-			if (inputValue === '') {
+			if (inputValue === undefined) {
 				inputIsValid = true;
-				betInput.set([inputValue, inputIsValid]);
+				betInput.set(inputValue);
 			}
 		} else {
 			inputIsValid = true;
-			betInput.set([inputValue, inputIsValid]);
+			betInput.set(inputValue);
 		}
 	};
 

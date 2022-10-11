@@ -1,30 +1,30 @@
 <script>
-    //Använd värdet ifrån stores istället för att skapa en ny här (placedAmount)?
-    import { writable } from 'svelte/store';
+	import { to_number } from 'svelte/internal';
+    import { betInput, walletAmount } from '../stores/stores';
+    
 
     let oldPrice;
-    export let placedAmount = writable(0);
+    let amount = 0;
+    
+    betInput.subscribe(value => {
+		amount = value
+	})
 
     let win;
 
-
-    export function placeBet(amount){
-        placedAmount = amount;
-        console.log(amount);
-        console.log(oldPrice);
-    }
-
     export function savePrice(coinCurrencyCost){
         console.log(coinCurrencyCost);
-        if(placedAmount != ' '){
+        if(amount != ' '){
             if(coinCurrencyCost > oldPrice){
                 win = true;
+                walletAmount.update(n => n + to_number(amount))
             }
             if(coinCurrencyCost == oldPrice){
                 win = 'draw'
             }
             if(coinCurrencyCost < oldPrice){
                 win = false
+                walletAmount.update(n => n - amount)
             }
         }
         oldPrice = coinCurrencyCost;
