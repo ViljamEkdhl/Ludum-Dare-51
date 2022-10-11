@@ -1,45 +1,41 @@
 <script>
 	import { to_number } from 'svelte/internal';
-    import { betInput, walletAmount } from '../stores/stores';
-    
+	import { betInput, walletAmount } from '../stores/stores';
 
-    let oldPrice;
-    let amount = 0;
-    
-    betInput.subscribe(value => {
-		amount = value
-	})
+	let oldCoinCost;
+	let betAmount;
 
-    let win;
+	betInput.subscribe((value) => (betAmount = value));
 
-    export function savePrice(coinCurrencyCost){
-        console.log(coinCurrencyCost);
-        if(amount != ' '){
-            if(coinCurrencyCost > oldPrice){
-                win = true;
-                walletAmount.update(n => n + to_number(amount))
-            }
-            if(coinCurrencyCost == oldPrice){
-                win = 'draw'
-            }
-            if(coinCurrencyCost < oldPrice){
-                win = false
-                walletAmount.update(n => n - amount)
-            }
-        }
-        oldPrice = coinCurrencyCost;
-    }
+	let win;
 
+	export function savePrice(currentCoinCost) {
+		console.log(currentCoinCost); // Glöm inte att ta bort
+		if (betAmount != ' ') {
+			if (currentCoinCost > oldCoinCost) {
+				win = true;
+				walletAmount.update((currentWalletAmount) => currentWalletAmount + to_number(betAmount));
+			}
+			if (currentCoinCost == oldCoinCost) {
+				win = 'draw';
+			}
+			if (currentCoinCost < oldCoinCost) {
+				win = false;
+				walletAmount.update((currentWalletAmount) => currentWalletAmount - betAmount);
+			}
+		}
+		oldCoinCost = currentCoinCost;
+	}
 </script>
 
 {#if win == true}
-    <span>You WIN!</span>
+	<span>You WIN!</span>
 {/if}
 
 {#if win == 'draw'}
-    <span>It neither went up or down :c</span>
+	<span>It neither went up or down :c</span>
 {/if}
 
 {#if win == false}
-    <span>You LOSE!</span>
+	<span>You LOSE!</span>
 {/if}

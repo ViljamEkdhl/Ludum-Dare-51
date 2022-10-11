@@ -3,18 +3,19 @@
 	import { betInput } from '../stores/stores';
 
 	let inputValue;
-	let inputIsValid = true;
+	let betValue;
+	let inputIsValid = true
+
+	export const lockInBet = () => {
+		betInput.set(betValue)
+	};
 	
 	const handleOnChange = () => {
-		if (!to_number(inputValue)) {
-			inputIsValid = false;
-			if (inputValue === undefined) {
-				inputIsValid = true;
-				betInput.set(inputValue);
-			}
-		} else {
+		if (to_number(inputValue) || inputValue === '') {
 			inputIsValid = true;
-			betInput.set(inputValue);
+			betValue = inputValue;
+		} else {
+			inputIsValid = false;
 		}
 	};
 

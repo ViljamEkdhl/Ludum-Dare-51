@@ -3,22 +3,24 @@
 	import { betInput } from '../stores/stores';
 
 	let betValue;
+	let lockInBet;
 
 	betInput.subscribe((value) => {
 		betValue = value;
 	});
 
 	const handleOnSubmit = () => {
-		betValue;
+		lockInBet.lockInBet()
 	};
 
 	const buttonStyle =
 		'bg-gray-200 rounded-lg px-3 py-2 border-b-4 self-baseline border-gray-500 active:border-b-0 active:border-t-2';
 </script>
 
-<InputField />
-
-<button class={buttonStyle} on:click={handleOnSubmit}> let's go! </button>
+<div class="flex gap-2">
+	<InputField bind:this={lockInBet} />
+	<button class={buttonStyle} on:click={handleOnSubmit}> let's go! </button>
+</div>
 
 {#if betValue != ''}
 	<p>
