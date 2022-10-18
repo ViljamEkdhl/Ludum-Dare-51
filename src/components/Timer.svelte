@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { to_number } from 'svelte/internal';
 	import { timer } from '../stores/stores';
 	import {tweened} from 'svelte/motion'
 
@@ -12,7 +11,7 @@
 		duration: 10
 	});
 
-	const start = () => {
+	const runTimer = () => {
 		timer.update(time => time - 1)
 		progressCount -= 0.1
 		progress.set(progressCount)
@@ -21,18 +20,10 @@
 			progressCount = 1
 			progress.set(progressCount)
 		}
-		
-
-		// if (Math.floor(countdown) < 0) {
-		// 	countdown = 1;
-		// 	progress.set(countdown, { duration: 0 });
-		// }
-		// countdown = countdown - 0.1;
-		// progress.set(countdown);
 	};
 
 	onMount(() => {
-		setInterval(start, 1000);
+		setInterval(runTimer, 1000);
 	});
 
 </script>

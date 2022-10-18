@@ -1,6 +1,5 @@
 <script>
 	import { timer } from '../stores/stores';
-	import { onMount } from 'svelte';
 	import CalculateWin from '../components/CalculateWin.svelte';
 
 	let currentCoinCost;
@@ -19,20 +18,6 @@
 
 		calculateWinComponent.savePrice(currentCoinCost);
 	}
-
-	// onMount(() => {
-	// 	const interval = setInterval(async () => {
-	// 		const response = await fetch(`https://api.coinbase.com/v2/prices/${currencyCode}/buy`);
-	// 		currentCoinCost = await response.json();
-	// 		JSON.stringify(currentCoinCost);
-	// 		currentCoinCost = currentCoinCost.data.amount;
-
-	// 		calculateWinComponent.savePrice(currentCoinCost);
-
-	// 	}, 10000);
-
-	// 	return () => clearInterval(interval);
-	// });
 
 </script>
 
