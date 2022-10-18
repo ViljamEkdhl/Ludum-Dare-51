@@ -3,7 +3,6 @@
 	import Wallet from '../components/Wallet.svelte';
 	import Form from '../components/Form.svelte';
 	import Greeting from '../components/Greeting.svelte';
-	import CalculateWin from '../components/CalculateWin.svelte';
 	import Timer from '../components/Timer.svelte';
 	import Chart from '../components/Chart.svelte';
 </script>

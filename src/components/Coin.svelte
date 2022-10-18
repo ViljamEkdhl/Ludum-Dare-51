@@ -1,25 +1,39 @@
 <script>
+	import { timer } from '../stores/stores';
 	import { onMount } from 'svelte';
 	import CalculateWin from '../components/CalculateWin.svelte';
 
 	let currentCoinCost;
 	let calculateWinComponent;
+	timer.subscribe(time => {
+		if (time === 0) getCoinValue()
+	})
 
 	export let currencyCode;
 
-	onMount(() => {
-		const interval = setInterval(async () => {
-			const response = await fetch(`https://api.coinbase.com/v2/prices/${currencyCode}/buy`);
-			currentCoinCost = await response.json();
-			JSON.stringify(currentCoinCost);
-			currentCoinCost = currentCoinCost.data.amount;
+	async function getCoinValue() {
+		const response = await fetch(`https://api.coinbase.com/v2/prices/${currencyCode}/buy`);
+		currentCoinCost = await response.json();
+		JSON.stringify(currentCoinCost);
+		currentCoinCost = currentCoinCost.data.amount;
 
-			calculateWinComponent.savePrice(currentCoinCost);
+		calculateWinComponent.savePrice(currentCoinCost);
+	}
 
-		}, 10000);
+	// onMount(() => {
+	// 	const interval = setInterval(async () => {
+	// 		const response = await fetch(`https://api.coinbase.com/v2/prices/${currencyCode}/buy`);
+	// 		currentCoinCost = await response.json();
+	// 		JSON.stringify(currentCoinCost);
+	// 		currentCoinCost = currentCoinCost.data.amount;
 
-		return () => clearInterval(interval);
-	});
+	// 		calculateWinComponent.savePrice(currentCoinCost);
+
+	// 	}, 10000);
+
+	// 	return () => clearInterval(interval);
+	// });
+
 </script>
 
 <CalculateWin bind:this={calculateWinComponent} />
