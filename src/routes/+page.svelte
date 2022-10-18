@@ -14,9 +14,6 @@
 		<Form />
 		<Coin currencyCode={'ETH-USD'} />
 		<Chart/>
-
-		<!-- Vad gör denna? -->
-		<CalculateWin />
 		<Timer />
 	</div>
 	<Wallet />
