@@ -10,7 +10,7 @@
 	let win;
 
 	export function savePrice(currentCoinCost) {
-		console.log(currentCoinCost); // Glöm inte att ta bort
+		console.log(currentCoinCost); // TODO: Glöm inte att ta bort
 		if (betAmount != ' ') {
 			if (currentCoinCost > oldCoinCost) {
 				win = true;
@@ -18,6 +18,7 @@
 			}
 			if (currentCoinCost == oldCoinCost) {
 				win = 'draw';
+				return;
 			}
 			if (currentCoinCost < oldCoinCost) {
 				win = false;
