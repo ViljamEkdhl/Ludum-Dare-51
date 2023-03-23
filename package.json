@@ -2,6 +2,7 @@
 	"name": "ludum-dare-51",
 	"version": "0.0.1",
 	"private": true,
+	"homepage": "https://viljamekdhl.github.io/Ludum-Dare-51/",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
